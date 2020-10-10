@@ -1,0 +1,11 @@
+C:\Users\Jonerys\Desktop\ТЯП КУРСОВАЯ\C#\JHTT\JHTT\bin\Debug\JHTT.exe.config
+C:\Users\Jonerys\Desktop\ТЯП КУРСОВАЯ\C#\JHTT\JHTT\bin\Debug\JHTT.exe
+C:\Users\Jonerys\Desktop\ТЯП КУРСОВАЯ\C#\JHTT\JHTT\bin\Debug\JHTT.pdb
+C:\Users\Jonerys\Desktop\ТЯП КУРСОВАЯ\C#\JHTT\JHTT\obj\Debug\JHTT.Properties.Resources.resources
+C:\Users\Jonerys\Desktop\ТЯП КУРСОВАЯ\C#\JHTT\JHTT\obj\Debug\JHTT.csproj.GenerateResource.cache
+C:\Users\Jonerys\Desktop\ТЯП КУРСОВАЯ\C#\JHTT\JHTT\obj\Debug\JHTT.csproj.CoreCompileInputs.cache
+C:\Users\Jonerys\Desktop\ТЯП КУРСОВАЯ\C#\JHTT\JHTT\obj\Debug\JHTT.exe
+C:\Users\Jonerys\Desktop\ТЯП КУРСОВАЯ\C#\JHTT\JHTT\obj\Debug\JHTT.pdb
+C:\Users\Jonerys\Desktop\ТЯП КУРСОВАЯ\C#\JHTT\JHTT\obj\Debug\JHTT.Form1.resources
+C:\Users\Jonerys\Desktop\ТЯП КУРСОВАЯ\C#\JHTT\JHTT\obj\Debug\JHTT.Help.resources
+C:\Users\Jonerys\Desktop\ТЯП КУРСОВАЯ\C#\JHTT\JHTT\obj\Debug\JHTT.csprojAssemblyReference.cache
