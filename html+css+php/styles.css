@@ -1,0 +1,6 @@
+#add_form { visibility: hidden;}
+#update_form, #delete_form { visibility: hidden; }
+form {
+     display:inline-block;
+}
+#upd_f, #del_f { margin-top:10px; }
