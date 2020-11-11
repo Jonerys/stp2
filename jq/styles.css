@@ -1,0 +1,7 @@
+#div_add, #div_upd, #div_del{
+    margin-bottom: 10px;
+}
+#add_form, #update_form, #delete_form {
+    visibility: hidden;
+}
+
