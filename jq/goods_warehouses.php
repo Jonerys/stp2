@@ -10,15 +10,15 @@
         
             $(document).ready(function() {
                 $('#add').click(function(){
-                    refresh_sel_ajax("sel_gd_add");
-                    refresh_sel_ajax("sel_wh_add");
-                    change_visibility('add', 'add_form');
+                    refresSelAJAX("selGd_add");
+                    refresSelAJAX("selWh_add");
+                    changeVisibility('add', 'add_form');
                 });
                 $('#update').click(function(){
-                    refresh_sel_ajax("sel_gd_upd");
-                    refresh_sel_ajax("sel_wh_upd");
+                    refresSelAJAX("selGd_upd");
+                    refresSelAJAX("selWh_upd");
                     //$('#sel_upd').trigger('change');
-                    change_visibility('update', 'update_form');
+                    changeVisibility('update', 'update_form');
                     
                 });
                 $('#sel_upd').change(function() {
@@ -33,17 +33,17 @@
                     }
                     let gname = table.rows[index].cells[1].innerHTML;
                     let wname = table.rows[index].cells[2].innerHTML;
-                    let sel_g = document.getElementById("sel_gd_upd");
-                    let sel_w = document.getElementById("sel_wh_upd");
-                    for (let i = 0; i < sel_g.options.length; i++) {
-                        if (sel_g.options[i].innerHTML == gname) {
-                            sel_g.selectedIndex = i;
+                    let selG = document.getElementById("selGd_upd");
+                    let selW = document.getElementById("selWh_upd");
+                    for (let i = 0; i < selG.options.length; i++) {
+                        if (selG.options[i].innerHTML == gname) {
+                            selG.selectedIndex = i;
                             break;
                         }
                     }
-                    for (let i = 0; i < sel_w.options.length; i++) {
-                        if (sel_w.options[i].innerHTML == wname) {
-                            sel_w.selectedIndex = i;
+                    for (let i = 0; i < selW.options.length; i++) {
+                        if (selW.options[i].innerHTML == wname) {
+                            selW.selectedIndex = i;
                             break;
                         }
                     }
@@ -69,9 +69,9 @@
                 <?php
                     $db = mysqli_connect('localhost', 'root', '', 'goods') or die();
                     mysqli_set_charset($db, 'utf8');
-                    $data_source = mysqli_query($db, "SELECT goodswh.id, goods_main.name gn, warehouses.name wn FROM goodswh, goods_main, warehouses WHERE goodswh.id_gd = goods_main.id AND goodswh.id_wh = warehouses.id ORDER BY id ASC") 
+                    $dataSource = mysqli_query($db, "SELECT goodswh.id, goods_main.name gn, warehouses.name wn FROM goodswh, goods_main, warehouses WHERE goodswh.id_gd = goods_main.id AND goodswh.id_wh = warehouses.id ORDER BY id ASC") 
                         or die("Ошибка " . mysqli_error($db));
-                    $result = mysqli_fetch_all($data_source, MYSQLI_ASSOC);
+                    $result = mysqli_fetch_all($dataSource, MYSQLI_ASSOC);
                     echo '<table id="main_table" border="1" width="500px" style="float:left; margin-left:10px;">';
                     echo "<tr><th>ИД</th><th>Товар</th><th>Склад</th></tr>";
                     for($i = 0; $i < count($result); $i++) {
@@ -86,14 +86,14 @@
             </div>
             <div style="float: left; display:inline-block; margin-left:15px;">
                 <div id="div_add">
-                    <button id="add" onclick="change_visibility('add', 'add_form')">Добавить</button>
+                    <button id="add" onclick="changeVisibility('add', 'add_form')">Добавить</button>
                     <span id="add_form" >
-                        <select id="sel_gd_add" name="selector">
+                        <select id="selGd_add" name="selector">
                         </select>
-                        <select id="sel_wh_add" name="selector">
+                        <select id="selWh_add" name="selector">
                         </select>    
                         <input id="sub_i" type="submit" value="ОК"/>
-                        <button id="cancel" onclick="change_visibility('add_form', 'add')">Отмена</button>
+                        <button id="cancel" onclick="changeVisibility('add_form', 'add')">Отмена</button>
                     </span></br>
                 </div>
                 <div id="div_upd">
@@ -106,16 +106,16 @@
                                 }
                             ?>
                         </select>
-                        <select id="sel_gd_upd" name="selector">
+                        <select id="selGd_upd" name="selector">
                         </select>
-                        <select id="sel_wh_upd" name="selector">
+                        <select id="selWh_upd" name="selector">
                         </select>    
                         <input id="sub_u" type="submit" value="ОК"/>
-                        <button id="cancel" onclick="change_visibility('update_form', 'update')">Отмена</button>
+                        <button id="cancel" onclick="changeVisibility('update_form', 'update')">Отмена</button>
                     </span></br>
                 </div>
                 <div id="div_del">
-                    <button id="delete" onclick="change_visibility('delete', 'delete_form')">Удалить</button>
+                    <button id="delete" onclick="changeVisibility('delete', 'delete_form')">Удалить</button>
                     <span id="delete_form">
                         <select id="sel_del" name="selector2">
                             <?php 
@@ -125,7 +125,7 @@
                             ?>
                         </select>
                         <input id="sub_d" type="submit" value="ОК"/>
-                        <button id="cancel" onclick="change_visibility('delete_form', 'delete')">Отмена</button>
+                        <button id="cancel" onclick="changeVisibility('delete_form', 'delete')">Отмена</button>
                     </span></br>
                 </div>
             </div>    

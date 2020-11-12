@@ -24,15 +24,15 @@
         
             $(document).ready(function() {
                 $('#sub_i').click(function(){
-                    ajax("1");
+                    ajax("1", "db_files/db_goods.php");
                     reset(1);
                 });
                 $('#sub_u').click(function(){
-                    ajax("2");
+                    ajax("2", "db_files/db_goods.php");
                     reset(2);
                 });
                 $('#sub_d').click(function(){
-                    ajax("3");
+                    ajax("3", "db_files/db_goods.php");
                     reset(3);
                 });
             });
@@ -40,63 +40,64 @@
     </head>
 
     <body>
-        <h1>Товары</h1>
-        <div id="div_table">
-        <?php
-            $db = mysqli_connect('localhost', 'root', '', 'goods') or die();
-            mysqli_set_charset($db, 'utf8');
-            $data_source = mysqli_query($db, "SELECT * FROM goods_main") or die("Ошибка " . mysqli_error($db));
-            $result = mysqli_fetch_all($data_source, MYSQLI_ASSOC);
-            echo '<table id="main_table" border="1" width="500px" style="float:left; margin-left:10px;">';
-            echo "<tr><th>ИД</th><th>Название</th></tr>";
-            for($i = 0; $i < count($result); $i++) {
-                echo "<tr>";
-                    echo "<td>" . $result[$i]["id"] . "</td>";
-                    echo "<td>" . $result[$i]["name"] . "</td>";
-                    echo "</tr>";
-            }
-            echo "</table>";
-            mysqli_close($db);
-        ?>
-        </div>
-        <div style="float: left; display:inline-block; margin-left:15px;">
-            <div id="div_add">
-                <button id="add" onclick="change_visibility('add', 'add_form')">Добавить</button>
-                <span id="add_form" >
-                    <input id="txt" type="text" width="100px" name="name" />
-                    <input id="sub_i" type="submit" value="Подтвердить"/>
-                    <button id="cancel" onclick="change_visibility('add_form', 'add')">Отмена</button>
-                </span></br>
+        <div>
+            <h1>Товары</h1>
+            <div id="div_table">
+                <?php
+                    $db = mysqli_connect('localhost', 'root', '', 'goods') or die();
+                    mysqli_set_charset($db, 'utf8');
+                    $dataSource = mysqli_query($db, "SELECT * FROM goods_main ORDER BY id ASC") or die("Ошибка " . mysqli_error($db));
+                    $result = mysqli_fetch_all($dataSource, MYSQLI_ASSOC);
+                    echo '<table id="main_table" border="1" width="500px" style="float:left; margin-left:10px;">';
+                    echo "<tr><th>ИД</th><th>Название</th></tr>";
+                    for($i = 0; $i < count($result); $i++) {
+                        echo "<tr>";
+                            echo "<td>" . $result[$i]["id"] . "</td>";
+                            echo "<td>" . $result[$i]["name"] . "</td>";
+                            echo "</tr>";
+                    }
+                    echo "</table>";
+                ?>
             </div>
-            <div id="div_upd">
-                <button id="update" onclick="change_visibility('update', 'update_form')">Редактировать</button>
-                <span id="update_form">
-                    <select id="sel_upd" name="selector">
-                        <?php 
-                            for ($i = 0; $i < count($result); $i++) {
-                                echo "<option>". $result[$i]["id"] . "</option>";
-                            }
-                        ?>
-                    </select>
-                    <input id="txt2" type="text" width="100px" name="name" />
-                    <input id="sub_u" type="submit" value="Подтвердить"/>
-                    <button id="cancel" onclick="change_visibility('update_form', 'update')">Отмена</button>
-                </span></br>
-            </div>
-            <div id="div_del">
-                <button id="delete" onclick="change_visibility('delete', 'delete_form')">Удалить</button>
-                <span id="delete_form">
-                    <select id="sel_del" name="selector2">
-                        <?php 
-                            for ($i = 0; $i < count($result); $i++) {
-                                echo "<option>". $result[$i]["id"] . "</option>";
-                            }
-                        ?>
-                    </select>
-                    <input id="sub_d" type="submit" value="Подтвердить"/>
-                    <button id="cancel" onclick="change_visibility('delete_form', 'delete')">Отмена</button>
-                </span></br>
-            </div>
+            <div style="float: left; display:inline-block; margin-left:15px;">
+                <div id="div_add">
+                    <button id="add" onclick="changeVisibility('add', 'add_form')">Добавить</button>
+                    <span id="add_form" >
+                        <input id="txt" type="text" width="100px" name="name" />
+                        <input id="sub_i" type="submit" value="Подтвердить"/>
+                        <button id="cancel" onclick="changeVisibility('add_form', 'add')">Отмена</button>
+                    </span></br>
+                </div>
+                <div id="div_upd">
+                   <button id="update" onclick="changeVisibility('update', 'update_form')">Редактировать</button>
+                    <span id="update_form">
+                        <select id="sel_upd" name="selector">
+                            <?php 
+                                for ($i = 0; $i < count($result); $i++) {
+                                    echo "<option>". $result[$i]["id"] . "</option>";
+                                }
+                            ?>
+                        </select>
+                        <input id="txt2" type="text" width="100px" name="name" />
+                        <input id="sub_u" type="submit" value="Подтвердить"/>
+                        <button id="cancel" onclick="changeVisibility('update_form', 'update')">Отмена</button>
+                    </span></br>
+                </div>
+                <div id="div_del">
+                    <button id="delete" onclick="changeVisibility('delete', 'delete_form')">Удалить</button>
+                    <span id="delete_form">
+                        <select id="sel_del" name="selector2">
+                            <?php 
+                                for ($i = 0; $i < count($result); $i++) {
+                                    echo "<option>". $result[$i]["id"] . "</option>";
+                                }
+                            ?>
+                        </select>
+                        <input id="sub_d" type="submit" value="Подтвердить"/>
+                        <button id="cancel" onclick="changeVisibility('delete_form', 'delete')">Отмена</button>
+                    </span></br>
+                </div>
+            </div>    
         </div>
     </body>
 </html>
