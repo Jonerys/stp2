@@ -2,7 +2,7 @@
 <html lang="ru">
     <head>
         <meta charset="utf-8" />
-        <title>Товары</title>
+        <title>Склады</title>
         <link rel="stylesheet" href="styles.css" />
         <script src="script.js"></script>
         <script src="jquery-3.5.1.min.js"></script>
@@ -24,15 +24,15 @@
         
             $(document).ready(function() {
                 $('#sub_i').click(function(){
-                    ajax("1", "db_files/db_goods.php");
+                    ajax("1", "db_files/db_warehouses.php");
                     reset(1);
                 });
                 $('#sub_u').click(function(){
-                    ajax("2", "db_files/db_goods.php");
+                    ajax("2", "db_files/db_warehouses.php");
                     reset(2);
                 });
                 $('#sub_d').click(function(){
-                    ajax("3", "db_files/db_goods.php");
+                    ajax("3", "db_files/db_warehouses.php");
                     reset(3);
                 });
             });
@@ -41,12 +41,12 @@
 
     <body>
         <div>
-            <h1>Товары</h1>
+            <h1>Склады</h1>
             <div id="div_table">
                 <?php
                     $db = mysqli_connect('localhost', 'root', '', 'goods') or die();
                     mysqli_set_charset($db, 'utf8');
-                    $dataSource = mysqli_query($db, "SELECT * FROM goods_main ORDER BY id ASC") or die("Ошибка " . mysqli_error($db));
+                    $dataSource = mysqli_query($db, "SELECT * FROM warehouses ORDER BY id ASC") or die("Ошибка " . mysqli_error($db));
                     $result = mysqli_fetch_all($dataSource, MYSQLI_ASSOC);
                     echo '<table id="main_table" border="1" width="500px" style="float:left; margin-left:10px;">';
                     echo "<tr><th>ИД</th><th>Название</th></tr>";
